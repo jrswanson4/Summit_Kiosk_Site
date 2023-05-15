@@ -1,122 +1,63 @@
 import React from 'react';
 import "@patternfly/react-core/dist/styles/base.css";
-import "@patternfly/patternfly/patternfly.css"
+import "@patternfly/patternfly/patternfly.css";
+import { useState } from "react";
+import { ReactDOM } from 'react';
+
 
 import {
-  Button,
-  Card,
-  CardBody,
-  Flex,
-  FlexItem,
-  Grid,
-  Page,
-  Masthead,
-  MastheadToggle,
-  MastheadMain,
-  MastheadBrand,
-  MastheadContent,
-  PageSidebar,
-  PageSection,
-  PageSectionVariants,
-  PageToggleButton,
-  Pagination,
-  Title,
-  TitleSizes,
-  Toolbar,
-  ToolbarContent,
-  ToolbarGroup,
-  ToolbarItem,
   Stack,
   StackItem,
-  Tabs,
-  Tab,
-  TabContent,
-  TabTitleText,
-  Tooltip,
-  CardTitle,
-  CardFooter,
-  Gallery,
-  Split,
-  GalleryItem,
-  GridItem,
-  SplitItem,
-  Bullseye,
-  EmptyStatePrimary,
-  Level,
-  LevelItem,
   BackgroundImage,
+  Flex,
+  Button,
+  Popover
 } from '@patternfly/react-core'
 
-import Overview from './Overview';
-import Homepage from './Homepage';
-//import Collections from './Collections';
-
-import {
-  TimesIcon
-} from '@patternfly/react-icons';
-import BarsIcon from '@patternfly/react-icons/dist/esm/icons/bars-icon';
-import GithubIcon from '@patternfly/react-icons/dist/esm/icons/github-icon'; 
-import AnisbleIcon from '@patternfly/react-icons/dist/esm/icons/ansible-tower-icon'; 
-import logo from './logo.svg';
-//import redHatRuntimeLogo from './images/red-hat-runtime-logo.svg';
 import Background from './images/pfbg_1200.jpg';
+import Celona from './images/Celona-logo_CMYK.png'
+import RH_Verizon from './images/Logo-Red_HatVerizon-A-Reverse-RGB.png'
+import RH_Intel from './images/Logo-Red_Hat-Intel-A-Reverse-RGB.png' 
+import Video from './videos/RHEL-provisioning.mp4'
 import './App.css';
+//import Video from './Video'
+
+
+
 
 class SeparateTabs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeKey: 0,
-      homeHidden: false,
-      overviewHidden: true
-    };
-
-    this.contentRef1 = React.createRef();
-    this.contentRef2 = React.createRef();
-    this.contentRef3 = React.createRef();
-    this.contentRef4 = React.createRef();
-    this.contentRef5 = React.createRef();
-
-    // Toggle currently active tab
-    this.handleTabClick = (event, tabIndex) => {
-      // have to hide the homepage in the case the 'Learn More' button is clicked
-      if (tabIndex === 0) {
-        this.setState({
-          activeTabKey: tabIndex,
-          homeHidden: false,
-          overviewHidden: true
-        });
-      } else if (tabIndex === 1){
-        this.setState({
-          activeTabKey: tabIndex,
-          homeHidden: true,
-          overviewHidden: false
-        });
-      } else {
-        this.setState({
-          activeTabKey: tabIndex,
-          homeHidden: true,
-          overviewHidden: true
-        });
-      }
-      console.log(this.overviewHidden)
-    };
-
-  }
-
   
-
+  
   render() {
-    return ( 
+    
+    return (
       <React.Fragment>
-        <BackgroundImage src={Background}/> 
-        <Split hasGutter className="navbar">       
-          <SplitItem isFilled hasGutter> 
-            
-          </SplitItem>
-          
-        </Split>
-        <div className='page-padding'>  
+        <BackgroundImage src={Background} />
+        <Flex className='Flex-options'>
+          <Stack className='Stack-options'>
+            <StackItem className='stack-item-padding'>
+              <img src={RH_Verizon} className='logo_verizon' />
+              <img src={Celona} className='logo' />
+              <img src={RH_Intel} className='logo_intel' />
+            </StackItem>
+            <StackItem isFilled className='stack-item-padding'>
+              <h1 className='h1'>Red Hat Edge Device Provisioning</h1>
+              <video className='video' controls> 
+                <source src={Video} type="video/mp4"/>  
+              </video>
+            </StackItem>
+              <Popover   aria-label="Basic popover" headerContent={<div className='popover'>Red Hat Device Edge Fun Facts</div>}
+                bodyContent={<div >1. It is a platform for deploying workloads onto small devices at the edge <br/>2. It includes both Red Hat Enterprise Linux and MicroShift
+                  <br/>3. It lets you use tools and processes to manage up to hundreds of thousands of devices
+                  </div>} footerContent={<div className='popover'>Remember to head over the the Edge Booth for some swag!</div>}> 
+                    <Button>Click here for fun facts!</Button> 
+                  </Popover>
+            <StackItem>
+              
+            </StackItem>
+          </Stack>
+        </Flex>
+        <div className='page-padding'>   
         </div>
       </React.Fragment>
     );
@@ -126,9 +67,11 @@ class SeparateTabs extends React.Component {
 // get the current year for the footer
 const getCurrYear = () => {
   var today = new Date(),
-  currYear = today.getFullYear();
-  return currYear;
+    currYear = today.getFullYear();
+  return currYear; 
 }
+
+
 
 function App() {
   return (
