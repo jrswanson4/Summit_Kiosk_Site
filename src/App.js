@@ -41,9 +41,7 @@ class SeparateTabs extends React.Component {
         <Flex className='Flex-options'>
           <Stack className='Stack-options'>
             <StackItem className='stack-item-padding'>
-              <img src={RH_Verizon} className='logo_verizon' />
-              <img src={Celona} className='logo' />
-              <img src={RH_Intel} className='logo_intel' /> 
+              
             </StackItem>
             <StackItem isFilled className='stack-item-padding'>
               <h1 className='h1'>Red Hat Edge Device Provisioning</h1>
