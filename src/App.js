@@ -45,7 +45,7 @@ class SeparateTabs extends React.Component {
               <img src={Celona} className='logo' /> 
             </StackItem>
             <StackItem isFilled className='stack-item-padding'>
-              <h1 className='h1'>Red Hat Edge Device Provisioning</h1>
+              <h1 className='h1'>Red Hat Edge Device Provisioning!</h1>
               <video className='video' controls>
                 <source src={Video} type="video/mp4" />
               </video>
